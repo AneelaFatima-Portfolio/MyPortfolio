@@ -2346,6 +2346,10 @@ section,
   border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
+.tooltip {
+    z-index: 999999 !important;
+}
+
 .portfolio-details .portfolio-content .meta-info span {
   font-size: 14px;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
