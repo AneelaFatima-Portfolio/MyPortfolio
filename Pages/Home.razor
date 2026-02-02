@@ -762,6 +762,7 @@
         if (firstRender)
         {
             await JS.InvokeVoidAsync("AOS.init");
+            await JS.InvokeVoidAsync("initializeTooltips");
             await Task.Delay(500);
             _isAnimated = true;
             StateHasChanged();

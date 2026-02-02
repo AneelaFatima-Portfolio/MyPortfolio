@@ -67,12 +67,15 @@
   });
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    window.initializeTooltips = () => {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    })
+            // Dispose existing tooltips to prevent memory leaks/duplicates
+            var existing = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+            if (existing) { existing.dispose(); }
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    };
   /**
    * Preloader
    */
